@@ -1,0 +1,431 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+  - url: /favicon.ico
+    static_files: dist/favicon.ico
+    upload: dist/favicon.ico
+    mime_type: text/javascript
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.aac)
+    static_files: dist/\1
+    upload: dist/(.+\.aac)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.abw)
+    static_files: dist/\1
+    upload: dist/(.+\.abw)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.arc)
+    static_files: dist/\1
+    upload: dist/(.+\.arc)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.avi)
+    static_files: dist/\1
+    upload: dist/(.+\.avi)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.azw)
+    static_files: dist/\1
+    upload: dist/(.+\.azw)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.bin)
+    static_files: dist/\1
+    upload: dist/(.+\.bin)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.bmp)
+    static_files: dist/\1
+    upload: dist/(.+\.bmp)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.bz)
+    static_files: dist/\1
+    upload: dist/(.+\.abw)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.bz2)
+    static_files: dist/\1
+    upload: dist/(.+\.bz2)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.csh)
+    static_files: dist/\1
+    upload: dist/(.+\.csh)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.css)
+    static_files: dist/\1
+    upload: dist/(.+\.css)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.csv)
+    static_files: dist/\1
+    upload: dist/(.+\.csv)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.doc)
+    static_files: dist/\1
+    upload: dist/(.+\.doc)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.docx)
+    static_files: dist/\1
+    upload: dist/(.+\.docx)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.eot)
+    static_files: dist/\1
+    upload: dist/(.+\.eot)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.epub)
+    static_files: dist/\1
+    upload: dist/(.+\.epub)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.gif)
+    static_files: dist/\1
+    upload: dist/(.+\.gif)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.htm)
+    static_files: dist/\1
+    upload: dist/(.+\.htm)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.html)
+    static_files: dist/\1
+    upload: dist/(.+\.html)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ico)
+    static_files: dist/\1
+    upload: dist/(.+\.ico)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ics)
+    static_files: dist/\1
+    upload: dist/(.+\.ics)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.jar)
+    static_files: dist/\1
+    upload: dist/(.+\.jar)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.jpeg)
+    static_files: dist/\1
+    upload: dist/(.+\.jpeg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.jpg)
+    static_files: dist/\1
+    upload: dist/(.+\.jpg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.js)
+    static_files: dist/\1
+    upload: dist/(.+\.js)
+    secure: always
+    mime_type: text/javascript
+
+  - url: /(.+\.json)
+    static_files: dist/\1
+    upload: dist/(.+\.json)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.mid)
+    static_files: dist/\1
+    upload: dist/(.+\.mid)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.midi)
+    static_files: dist/\1
+    upload: dist/(.+\.midi)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.mpeg)
+    static_files: dist/\1
+    upload: dist/(.+\.mpeg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.mpkg)
+    static_files: dist/\1
+    upload: dist/(.+\.mpkg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.odp)
+    static_files: dist/\1
+    upload: dist/(.+\.odp)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ods)
+    static_files: dist/\1
+    upload: dist/(.+\.ods)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.odt)
+    static_files: dist/\1
+    upload: dist/(.+\.odt)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.oga)
+    static_files: dist/\1
+    upload: dist/(.+\.oga)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ogv)
+    static_files: dist/\1
+    upload: dist/(.+\.ogv)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ogx)
+    static_files: dist/\1
+    upload: dist/(.+\.ogx)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.otf)
+    static_files: dist/\1
+    upload: dist/(.+\.otf)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.png)
+    static_files: dist/\1
+    upload: dist/(.+\.png)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.pdf)
+    static_files: dist/\1
+    upload: dist/(.+\.pdf)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ppt)
+    static_files: dist/\1
+    upload: dist/(.+\.ppt)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.pptx)
+    static_files: dist/\1
+    upload: dist/(.+\.pptx)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.rar)
+    static_files: dist/\1
+    upload: dist/(.+\.rar)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.rtf)
+    static_files: dist/\1
+    upload: dist/(.+\.rtf)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.sh)
+    static_files: dist/\1
+    upload: dist/(.+\.sh)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.svg)
+    static_files: dist/\1
+    upload: dist/(.+\.svg)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.swf)
+    static_files: dist/\1
+    upload: dist/(.+\.swf)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.tar)
+    static_files: dist/\1
+    upload: dist/(.+\.tar)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.tif)
+    static_files: dist/\1
+    upload: dist/(.+\.tif)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.tiff)
+    static_files: dist/\1
+    upload: dist/(.+\.tiff)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ts)
+    static_files: dist/\1
+    upload: dist/(.+\.ts)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.ttf)
+    static_files: dist/\1
+    upload: dist/(.+\.ttf)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.vsd)
+    static_files: dist/\1
+    upload: dist/(.+\.vsd)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.wav)
+    static_files: dist/\1
+    upload: dist/(.+\.wav)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.weba)
+    static_files: dist/\1
+    upload: dist/(.+\.weba)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.webm)
+    static_files: dist/\1
+    upload: dist/(.+\.webm)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.webp)
+    static_files: dist/\1
+    upload: dist/(.+\.webp)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.woff)
+    static_files: dist/\1
+    upload: dist/(.+\.woff)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.woff2)
+    static_files: dist/\1
+    upload: dist/(.+\.woff2)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.xhtml)
+    static_files: dist/\1
+    upload: dist/(.+\.xhtml)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.xls)
+    static_files: dist/\1
+    upload: dist/(.+\.xls)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.xlsx)
+    static_files: dist/\1
+    upload: dist/(.+\.xlsx)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.midi)
+    static_files: dist/\1
+    upload: dist/(.+\.midi)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.xml)
+    static_files: dist/\1
+    upload: dist/(.+\.xml)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.xul)
+    static_files: dist/\1
+    upload: dist/(.+\.xul)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.zip)
+    static_files: dist/\1
+    upload: dist/(.+\.zip)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.3gp)
+    static_files: dist/\1
+    upload: dist/(.+\.3gp)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.3g2)
+    static_files: dist/\1
+    upload: dist/(.+\.3g2)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+\.7z)
+    static_files: dist/\1
+    upload: dist/(.+\.7z)
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /(.+)
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: always
+    redirect_http_response_code: 301
+
+  - url: /
+    static_files: dist/index.html
+    upload: dist/index.html
+    secure: always
+    redirect_http_response_code: 301

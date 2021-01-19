@@ -1,0 +1,93 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row m-0" *ngIf="is_loaded else spinner">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">News page</h4>
+                    </div>
+                    <div class="card-content table-responsive table-full-width">
+                        <p class="card-category">
+                            <span class="material-icons">
+                                info
+                            </span>
+                            In this page, you can add news to a specific county or to worldwide.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-content table-responsive table-full-width">
+                        <div offset="2" class="col-lg-9 col-md-9 col-sm-9">
+                            <p>Specify country and add news</p>
+                            <form [formGroup]="newsForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Country</mat-label>
+                                        <mat-select formControlName="country">
+                                            <div *ngFor="let ctr of countries">
+                                                <mat-option value="{{ctr}}">{{ctr| titlecase}}</mat-option>
+                                            </div>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-error *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                        <div *ngIf="f.country.errors.required">Country is required</div>
+                                    </mat-error>
+                                </div>
+                                <div class="form-group">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Description</mat-label>
+                                        <input type="text" matInput formControlName="description"
+                                            class="form-control" />
+                                    </mat-form-field>
+                                    <mat-error *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                        <div *ngIf="f.description.errors.pattern">Description must be text.</div>
+                                    </mat-error>
+                                </div>
+                                <div class="form-group">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>New cases</mat-label>
+                                        <input type="text" matInput formControlName="new_cases" class="form-control" />
+                                    </mat-form-field>
+                                    <mat-error *ngIf="submitted && f.new_cases.errors" class="invalid-feedback">
+                                        <div *ngIf="f.new_cases.errors.pattern">New cases must be a number.</div>
+                                    </mat-error>
+                                </div>
+                                <div class="form-group">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>New recovered</mat-label>
+                                        <input type="text" matInput formControlName="new_recovered"
+                                            class="form-control" />
+                                    </mat-form-field>
+                                    <mat-error *ngIf="submitted && f.new_recovered.errors" class="invalid-feedback">
+                                        <div *ngIf="f.new_recovered.errors.pattern">New recovered must be a number.
+                                        </div>
+                                    </mat-error>
+                                </div>
+                                <div class="form-group">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>New deaths</mat-label>
+                                        <input type="text" matInput formControlName="new_deaths" class="form-control" />
+                                    </mat-form-field>
+                                    <mat-error *ngIf="submitted && f.new_deaths.errors" class="invalid-feedback">
+                                        <div *ngIf="f.new_deaths.errors.pattern">New deaths must be a number.</div>
+                                    </mat-error>
+                                </div>
+                                <div class="form-group">
+                                    <button [disabled]="loading" class="btn btn-instagram" style="margin-left: 80%;">
+                                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                        Add
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-template #spinner>
+            <div class="loader"></div>
+        </ng-template>
+    </div>
+</div>

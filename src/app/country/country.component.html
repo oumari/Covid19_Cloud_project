@@ -1,0 +1,164 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" *ngIf="is_loaded else spinner">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">{{country | titlecase}}</h4>
+                        <div class="leftist"><img src="{{flag}}"></div>
+                    </div>
+                    <div class="card-content table-responsive table-full-width">
+                        <p class="card-category">
+                            <span class="material-icons">
+                                info
+                            </span>
+                            In this page, you can check a summary of covid-19 {{country | titlecase}} updates.
+                        </p>
+                        <button class="leftist" mat-raised-button color="primary" (click)="toNews()">
+                            <span class="material-icons">
+                                add_circle
+                            </span>Add news</button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="has_news"></div>
+            <div class="col-lg-12 col-md-12 col-sm-12" *ngFor='let NEWS of news | slice: lowValue : highValue'>
+                <div class="card-header-danger">
+                    <h4 class="card-title">News</h4>
+                    <p class="card-category"> News added by {{NEWS.user}} on {{NEWS.date.toDate() | date:'short'}} </p>
+
+                </div>
+                <div class="card-content">
+                    <div class="row" style="text-align: center;justify-content: center;">
+                        <div class=" col card col-lg-3 col-md-3 col-sm-3">
+                            <div class="card-header-info">
+                                <h4 class="card-title down">{{NEWS.new_cases}}</h4>
+                                <p class="card-category">New cases </p>
+                            </div>
+                        </div>
+                        <div class="col card col-lg-3 col-md-3 col-sm-3">
+                            <div class="card card-header-success">
+                                <h4 class="card-title down">{{NEWS.new_recovered}} </h4>
+                                <p class="card-category">New recovered</p>
+                            </div>
+                        </div>
+                        <div class="col card col-lg-3 col-md-3 col-sm-3">
+                            <div class="card card-header-danger">
+                                <h4 class="card-title down">{{NEWS.new_deaths}} </h4>
+                                <p class="card-category">New deaths</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mat-paginator class="col-lg-12 col-md-12 col-sm-12" [length]="news.length" [pageSize]="pageSize"
+                (page)="pageEvent = getPaginatorData($event)">
+            </mat-paginator>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Corona Virus Summary {{country| titlecase}}</h4>
+                        <p class="card-category">Check summary on covid-19</p>
+                    </div>
+                    <div class="card-content table-responsive table-full-width">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Total Cases</td>
+                                    <td>{{data['TotalConfirmed'] | number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>New Cases</td>
+                                    <td>{{data['NewConfirmed'] | number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Active Cases</td>
+                                    <td>{{data['TotalConfirmed'] - data['TotalDeaths'] - data['TotalRecovered'] |
+                                        number}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Total Recovered</td>
+                                    <td>{{data['TotalRecovered'] | number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>New Recovered</td>
+                                    <td>{{data['NewRecovered'] | number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Recovery Rate</td>
+                                    <td>{{data['TotalRecovered']/data['TotalConfirmed'] | percent}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total Deaths</td>
+                                    <td>{{data['TotalDeaths'] | number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>New Deaths</td>
+                                    <td>{{data['NewDeaths'] | number}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Mortality Rate</td>
+                                    <td>{{data['TotalDeaths']/data['TotalConfirmed'] | percent}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Corona Virus Cases Distribution {{country| titlecase}}</h4>
+                        <p class="card-category">Check summary on covid-19</p>
+                    </div>
+                    <div class="card-content table-responsive table-full-width">
+                        <div class="chart-wrapper">
+                            <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                                [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                            </canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Daily corona virus cases {{country| titlecase}}</h4>
+                        <p class="card-category">Check summary on covid-19</p>
+                    </div>
+                    <div class="card-content table-responsive table-full-width">
+                        <div style="display: block;">
+                            <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+                                [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                                [chartType]="barChartType">
+                            </canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Total corona virus cases {{country| titlecase}}</h4>
+                        <p class="card-category">Check summary on covid-19</p>
+                    </div>
+                    <div class="card-content table-responsive table-full-width">
+                        <div style="display: block;">
+                            <canvas baseChart width="400" height="400" [datasets]="lineChartData"
+                                [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors"
+                                [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+                            </canvas>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <ng-template #spinner>
+            <div class="loader"></div>
+        </ng-template>
+    </div>
+</div>

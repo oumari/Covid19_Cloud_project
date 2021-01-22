@@ -53,7 +53,32 @@ export class FgoogleService {
           user: (await JSON.parse(user)).displayName,
           date: new Date()
         }
+        if (country.toLowerCase()=="worldwide"){
+          let doc = await this.firestore.collection("countries").doc(country).get().toPromise();
+
+          if (doc.exists){
+            console.log("worldwide mawjoud")
+            let aux = doc.data()
+            aux["news"].push(news)
+            await this.firestore.collection("countries").doc(country).set(aux, { merge: true });
+
+          }
+          else {
+            console.log("worldwide mch mawjoud")
+            let aux = new Object()
+            let ls = []
+            ls.push(news)
+            aux['news'] = ls
+            await this.firestore.collection("countries").doc(country).set(aux, { merge: true });
+          }
+          
+
+
+        }
+        else {
+
         let doc = await this.firestore.collection("countries").doc(country).get().toPromise();
+        
         if (doc.exists) {
           let aux = doc.data()
           if (aux['news'] != undefined) {
@@ -68,8 +93,24 @@ export class FgoogleService {
 
         }
         else {
-          await this.firestore.collection("countries").doc(country).set([news], { merge: true });
+          console.log("country mch mawjouda hani chnasnaaha")
+          await this.http.getFromCovidApi("summary").then(x => {
+
+            for (let element of x['Countries']) {
+              if (element.Country == country) {
+                console.log("l9it l country fil API",element.Country,country)
+                element.news = [news];
+                
+
+                this.firestore.collection("countries").doc(country).set(element, { merge: true });
+
+                break; 
+              }
+            };
+          })
         }
+      }
+
         return { error: false, message: "successfully added news !" };
 
       } catch (err) {

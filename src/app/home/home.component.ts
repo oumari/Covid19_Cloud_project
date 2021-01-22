@@ -7,6 +7,7 @@ import { LocalDataSource } from 'ng2-smart-table';
 import { MatDialog } from "@angular/material/dialog";
 import { DialogComponent } from './dialog/dialog.component';
 import { DialogNotconnectedComponent } from './dialog-notconnected/dialog-notconnected.component';
+import { FgoogleService } from 'app/service/fgoogle.service';
 
 
 @Component({
@@ -61,15 +62,25 @@ export class HomeComponent implements OnInit {
       backgroundColor: 'rgba(255,0,0,0.3)',
     },
   ];
+
   lineChartLegend = true;
   lineChartType = 'line';
   lineChartPlugins = [];
   source: LocalDataSource = new LocalDataSource([]);
 
+  news: any; 
+  has_news=false; 
+  lowValue: number = 0;
+  highValue: number = 1;
+  pageIndex: number = 0;
+  pageSize: number = 1;
+
+
   constructor(
     private http: HttpService,
     private route: Router,
-    public dialog: MatDialog  ) {
+    public dialog: MatDialog,
+    private fgoogle: FgoogleService  ) {
   }
 
   settings = {
@@ -108,6 +119,15 @@ export class HomeComponent implements OnInit {
   };
 
   async ngOnInit() {
+
+    //GET NEWS 
+    this.news = await this.fgoogle.get_news("Worldwide")
+    console.log(this.news)
+    if (this.news != undefined) {
+      this.has_news = true;
+    } else {
+      this.has_news = false;
+    }
     
     this.user = JSON.parse(localStorage.getItem("user"))
 

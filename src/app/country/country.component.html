@@ -21,39 +21,41 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="has_news"></div>
-            <div class="col-lg-12 col-md-12 col-sm-12" *ngFor='let NEWS of news | slice: lowValue : highValue'>
-                <div class="card-header-danger">
-                    <h4 class="card-title">News</h4>
-                    <p class="card-category"> News added by {{NEWS.user}} on {{NEWS.date.toDate() | date:'short'}} </p>
+            <div *ngIf="has_news">
+                <div class="col-lg-12 col-md-12 col-sm-12" *ngFor='let NEWS of news | slice: lowValue : highValue'>
+                    <div class="card-header-danger">
+                        <h4 class="card-title">News</h4>
+                        <p class="card-category"> News added by {{NEWS.user}} on {{NEWS.date.toDate() | date:'short'}}
+                        </p>
 
-                </div>
-                <div class="card-content">
-                    <div class="row" style="text-align: center;justify-content: center;">
-                        <div class=" col card col-lg-3 col-md-3 col-sm-3">
-                            <div class="card-header-info">
-                                <h4 class="card-title down">{{NEWS.new_cases}}</h4>
-                                <p class="card-category">New cases </p>
+                    </div>
+                    <div class="card-content">
+                        <div class="row" style="text-align: center;justify-content: center;">
+                            <div class=" col card col-lg-3 col-md-3 col-sm-3">
+                                <div class="card-header-info">
+                                    <h4 class="card-title down">{{NEWS.new_cases}}</h4>
+                                    <p class="card-category">New cases </p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col card col-lg-3 col-md-3 col-sm-3">
-                            <div class="card card-header-success">
-                                <h4 class="card-title down">{{NEWS.new_recovered}} </h4>
-                                <p class="card-category">New recovered</p>
+                            <div class="col card col-lg-3 col-md-3 col-sm-3">
+                                <div class="card card-header-success">
+                                    <h4 class="card-title down">{{NEWS.new_recovered}} </h4>
+                                    <p class="card-category">New recovered</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col card col-lg-3 col-md-3 col-sm-3">
-                            <div class="card card-header-danger">
-                                <h4 class="card-title down">{{NEWS.new_deaths}} </h4>
-                                <p class="card-category">New deaths</p>
+                            <div class="col card col-lg-3 col-md-3 col-sm-3">
+                                <div class="card card-header-danger">
+                                    <h4 class="card-title down">{{NEWS.new_deaths}} </h4>
+                                    <p class="card-category">New deaths</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <mat-paginator class="col-lg-12 col-md-12 col-sm-12" [length]="news.length" [pageSize]="pageSize"
+                    (page)="pageEvent = getPaginatorData($event)">
+                </mat-paginator>
             </div>
-            <mat-paginator class="col-lg-12 col-md-12 col-sm-12" [length]="news.length" [pageSize]="pageSize"
-                (page)="pageEvent = getPaginatorData($event)">
-            </mat-paginator>
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card">
                     <div class="card-header card-header-success">

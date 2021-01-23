@@ -228,5 +228,17 @@ export class HomeComponent implements OnInit {
     }
 
   }
+
+getPaginatorData(event) {
+  if (event.pageIndex === this.pageIndex + 1) {
+    this.lowValue = this.lowValue + this.pageSize;
+    this.highValue = this.highValue + this.pageSize;
+  }
+  else if (event.pageIndex === this.pageIndex - 1) {
+    this.lowValue = this.lowValue - this.pageSize;
+    this.highValue = this.highValue - this.pageSize;
+  }
+  this.pageIndex = event.pageIndex;
+}
 }
 
